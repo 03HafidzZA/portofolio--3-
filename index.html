@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Industrial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+        }
+        
+        .mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .metal-texture {
+            background: linear-gradient(135deg, #434343 0%, #262626 100%);
+            position: relative;
+        }
+        
+        .metal-texture::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                rgba(255,255,255,0.03) 2px,
+                rgba(255,255,255,0.03) 4px
+            );
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(255,184,0,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,184,0,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .glow-orange {
+            box-shadow: 0 0 20px rgba(255,184,0,0.3);
+        }
+        
+        .btn-industrial {
+            background: linear-gradient(135deg, #ff8800 0%, #ffb800 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-industrial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-industrial:hover::before {
+            left: 100%;
+        }
+        
+        .btn-industrial:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,184,0,0.4);
+        }
+        
+        .project-card {
+            background: rgba(38, 38, 38, 0.8);
+            border: 1px solid rgba(255,184,0,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,184,0,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .project-card:hover::after {
+            opacity: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,184,0,0.6);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        
+        .skill-badge {
+            background: rgba(255,184,0,0.1);
+            border: 1px solid rgba(255,184,0,0.3);
+            transition: all 0.3s;
+        }
+        
+        .skill-badge:hover {
+            background: rgba(255,184,0,0.2);
+            border-color: rgba(255,184,0,0.6);
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff8800, transparent);
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-slide-down {
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        .warning-stripe {
+            background: repeating-linear-gradient(
+                45deg,
+                #ffb800,
+                #ffb800 10px,
+                #1a1a1a 10px,
+                #1a1a1a 20px
+            );
+            height: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="metal-texture fixed w-full z-50 border-b border-yellow-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-yellow-500 mono">[ PORTFOLIO ]</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-yellow-500 transition">HOME</a>
+                    <a href="#about" class="text-gray-300 hover:text-yellow-500 transition">ABOUT</a>
+                    <a href="#projects" class="text-gray-300 hover:text-yellow-500 transition">PROJECTS</a>
+                    <a href="#skills" class="text-gray-300 hover:text-yellow-500 transition">SKILLS</a>
+                    <a href="#contact" class="text-gray-300 hover:text-yellow-500 transition">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="warning-stripe"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center grid-bg pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-slide-down">
+                <h1 class="text-6xl md:text-8xl font-bold mb-4 text-yellow-500 mono">ARYA DAMAR PANDALU</h1>
+                <div class="h-1 w-32 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-2xl md:text-3xl text-gray-400 mb-8 font-light">FULL STACK DEVELOPER</p>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">
+                    Merancang dan membangun solusi digital dengan presisi engineering dan estetika industrial
+                </p>
+                <div class="flex gap-4 justify-center">
+                    <a href="#projects" class="btn-industrial px-8 py-3 text-black font-bold rounded-none mono">
+                        LIHAT PROJECT
+                    </a>
+                    <a href="#contact" class="px-8 py-3 border-2 border-yellow-500 text-yellow-500 font-bold rounded-none hover:bg-yellow-500 hover:text-black transition mono">
+                        HUBUNGI SAYA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 metal-texture">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-5xl font-bold mb-16 text-yellow-500 mono">TENTANG SAYA</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="bg-gradient-to-br from-yellow-600 to-yellow-800 h-96 flex items-center justify-center">
+                        <span class="text-9xl text-black opacity-20 mono">ADP</span>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Saya adalah developer dengan pengalaman lebih dari 5 tahun dalam membangun aplikasi web dan mobile yang robust dan scalable. Dengan pendekatan sistematis dan detail-oriented, saya menghadirkan solusi yang tidak hanya fungsional tetapi juga efisien.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Spesialisasi saya mencakup arsitektur sistem, optimasi performa, dan implementasi best practices dalam software engineering. Saya percaya pada kode yang clean, maintainable, dan well-documented.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4 pt-6">
+                        <div class="text-center p-4 border border-yellow-600">
+                            <p class="text-4xl font-bold text-yellow-500 mono">50+</p>
+                            <p class="text-sm text-gray-400 mt-2">PROJECTS</p>
+                        </div>
+                        <div class="text-center p-4 border border-yellow-600">
+                            <p class="text-4xl font-bold text-yellow-500 mono">2+</p>
+                            <p class="text-sm text-gray-400 mt-2">MONTHS</p>
+                        </div>
+                        <div class="text-center p-4 border border-yellow-600">
+                            <p class="text-4xl font-bold text-yellow-500 mono">3+</p>
+                            <p class="text-sm text-gray-400 mt-2">CLIENTS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 grid-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-5xl font-bold mb-16 text-yellow-500 mono">PROJECTS</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="project-card p-6 rounded-none">
+                    <div class="bg-yellow-600 h-48 mb-4 flex items-center justify-center">
+                        <span class="text-6xl text-black opacity-30 mono">01</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-yellow-500 mono">E-COMMERCE PLATFORM</h3>
+                    <p class="text-gray-400 mb-4">Platform e-commerce full-stack dengan sistem payment gateway terintegrasi dan dashboard analytics real-time.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">REACT</span>
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">NODE.JS</span>
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">MONGODB</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-6 rounded-none">
+                    <div class="bg-yellow-600 h-48 mb-4 flex items-center justify-center">
+                        <span class="text-6xl text-black opacity-30 mono">02</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-yellow-500 mono">INVENTORY SYSTEM</h3>
+                    <p class="text-gray-400 mb-4">Sistem manajemen inventory dengan fitur tracking real-time, reporting, dan predictive analytics untuk optimasi stok.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">VUE.JS</span>
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">PYTHON</span>
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">POSTGRESQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-6 rounded-none">
+                    <div class="bg-yellow-600 h-48 mb-4 flex items-center justify-center">
+                        <span class="text-6xl text-black opacity-30 mono">03</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-yellow-500 mono">MOBILE APP</h3>
+                    <p class="text-gray-400 mb-4">Aplikasi mobile cross-platform untuk layanan on-demand dengan geolocation dan push notification.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">REACT NATIVE</span>
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">FIREBASE</span>
+                        <span class="text-xs px-2 py-1 bg-yellow-600 text-black mono">REDUX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 metal-texture">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-5xl font-bold mb-16 text-yellow-500 mono">TECHNICAL SKILLS</h2>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="skill-badge p-6 rounded-none text-center">
+                    <div class="text-4xl mb-3 text-yellow-500 mono">{ }</div>
+                    <h3 class="font-bold text-lg mb-2 text-yellow-500">FRONTEND</h3>
+                    <p class="text-sm text-gray-400">React, Vue, Angular, Tailwind, SCSS</p>
+                </div>
+                <div class="skill-badge p-6 rounded-none text-center">
+                    <div class="text-4xl mb-3 text-yellow-500 mono">[ ]</div>
+                    <h3 class="font-bold text-lg mb-2 text-yellow-500">BACKEND</h3>
+                    <p class="text-sm text-gray-400">Node.js, Python, PHP, Express, Django</p>
+                </div>
+                <div class="skill-badge p-6 rounded-none text-center">
+                    <div class="text-4xl mb-3 text-yellow-500 mono">&lt;/&gt;</div>
+                    <h3 class="font-bold text-lg mb-2 text-yellow-500">DATABASE</h3>
+                    <p class="text-sm text-gray-400">MongoDB, PostgreSQL, MySQL, Redis</p>
+                </div>
+                <div class="skill-badge p-6 rounded-none text-center">
+                    <div class="text-4xl mb-3 text-yellow-500 mono">⚙</div>
+                    <h3 class="font-bold text-lg mb-2 text-yellow-500">DEVOPS</h3>
+                    <p class="text-sm text-gray-400">Docker, AWS, CI/CD, Git, Nginx</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 grid-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="section-title text-5xl font-bold mb-8 text-yellow-500 mono">MARI BEKERJA SAMA</h2>
+            <p class="text-xl text-gray-400 mb-12">
+                Punya project atau ide yang ingin diwujudkan? Mari diskusi bagaimana saya bisa membantu.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+                <a href="mailto:john@example.com" class="flex items-center justify-center gap-2 text-gray-300 hover:text-yellow-500 transition">
+                    <span class="mono">✉</span>
+                    <span>Damarpandalua@gmail.com</span>
+                </a>
+                <a href="tel:+6281234567890" class="flex items-center justify-center gap-2 text-gray-300 hover:text-yellow-500 transition">
+                    <span class="mono">☎</span>
+                    <span>+62 896-0266-2843</span>
+                </a>
+            </div>
+            <div class="flex gap-6 justify-center">
+                <a href="#" class="w-12 h-12 border-2 border-yellow-500 flex items-center justify-center hover:bg-yellow-500 hover:text-black transition mono">IG</a>
+                <a href="#" class="w-12 h-12 border-2 border-yellow-500 flex items-center justify-center hover:bg-yellow-500 hover:text-black transition mono">WA</a>
+                <a href="#" class="w-12 h-12 border-2 border-yellow-500 flex items-center justify-center hover:bg-yellow-500 hover:text-black transition mono">GH</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="warning-stripe"></div>
+
+    <!-- Footer -->
+    <footer class="metal-texture py-8 border-t border-yellow-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500 mono">© 2026 ARYA DAMAR PANDALU. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
+            } else {
+                nav.style.backgroundColor = 'transparent';
+            }
+        });
+    </script>
+</body>
+</html>
